@@ -13,12 +13,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using BlazorApp1.Areas.Identity;
-using BlazorApp1.Data;
-using Markets_Namespace.Data.Models;
-using Microsoft.AspNetCore.Http;
+using BlazorApp2.Areas.Identity;
+using BlazorApp2.Data;
 
-namespace BlazorApp1
+namespace BlazorApp2
 {
     public class Startup
     {
@@ -36,10 +34,6 @@ namespace BlazorApp1
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<Markets_DBContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
